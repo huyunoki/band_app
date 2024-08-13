@@ -18,11 +18,11 @@
         <x-app-layout>
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('ホーム画面') }}
+                    {{ __('音楽アップロード画面') }}
                 </h2>
             </x-slot>
             <div class="welcome_message">
-                <div>ホーム画面にようこそ{{ Auth::user()->name }}さん！！</div>
+                <div>音楽アップロード画面にようこそ{{ Auth::user()->name }}さん！！</div>
             </div>
         </x-app-layout>
     </body>
