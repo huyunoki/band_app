@@ -15,8 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('posts/index')">
-                        {{ __('Index') }}
+                    <x-nav-link :href="route('post')" :active="request()->routeIs('index')">
+                        {{ __('ホーム画面') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('schedule')" :active="request()->routeIs('index')">
+                        {{ __('スケジュール画面') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('message')" :active="request()->routeIs('index')">
+                        {{ __('メッセージ画面') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('music_upload')" :active="request()->routeIs('index')">
+                        {{ __('音楽アップロード画面') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('music_listen')" :active="request()->routeIs('index')">
+                        {{ __('音楽画面') }}
                     </x-nav-link>
                 </div>
             </div>

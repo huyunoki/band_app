@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ホーム画面</title>
+        <title>スケジュール画面</title>
         <!--<link rel="stylesheet" href="/../../css/index.css">-->
         <style>
             .welcome_message {
@@ -18,11 +18,11 @@
         <x-app-layout>
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('ホーム画面') }}
+                    {{ __('音楽画面') }}
                 </h2>
             </x-slot>
             <div class="welcome_message">
-                <div>ホーム画面にようこそ{{ Auth::user()->name }}さん！！</div>
+                <div>音楽画面にようこそ{{ Auth::user()->name }}さん！！</div>
             </div>
         </x-app-layout>
     </body>

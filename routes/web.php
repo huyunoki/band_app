@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Music_uploadController;
+use App\Http\Controllers\Music_listenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +31,11 @@ Route::get('/dashboard', function () { // /dashboardにというURLにアクセ�
 //authはユーザーをverifiedはメールアドレスを認証できているときしかアクセスできない。また、後ろの奴は名前をつけていて
 // route('dashboard')とかくとこのルートのURLを取得できる。
 
-Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
+Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
+Route::get('/schedule/index',[ScheduleController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
+Route::get('/message/index',[MessageController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
+Route::get('/music_upload/index',[Music_uploadController::class, 'index'])->middleware(['auth', 'verified'])->name('music_upload');
+Route::get('/music_listen/index',[Music_listenController::class, 'index'])->middleware(['auth', 'verified'])->name('music_listen');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
