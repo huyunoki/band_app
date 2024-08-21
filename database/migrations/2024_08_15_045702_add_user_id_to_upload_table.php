@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chats', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('uploads', function (Blueprint $table) {
+            // 外部キー制約
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -22,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chats');
+        Schema::table('uploads', function (Blueprint $table) {
+            //
+        });
     }
 };

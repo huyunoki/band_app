@@ -4,8 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\Music_uploadController;
-use App\Http\Controllers\Music_listenController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ListenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +34,15 @@ Route::get('/dashboard', function () { // /dashboardにというURLにアクセ�
 Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
 Route::get('/schedule/index',[ScheduleController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
 Route::get('/message/index',[MessageController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
-Route::get('/music_upload/index',[Music_uploadController::class, 'index'])->middleware(['auth', 'verified'])->name('music_upload');
-Route::get('/music_listen/index',[Music_listenController::class, 'index'])->middleware(['auth', 'verified'])->name('music_listen');
+Route::get('/upload/index',[UploadController::class, 'index'])->middleware(['auth', 'verified'])->name('upload');
+Route::get('/listen/index',[ListenController::class, 'index'])->middleware(['auth', 'verified'])->name('listen');
+
+Route::get('/upload/create', [UploadController::class, 'create']);
+Route::post('/upload/store', [UploadController::class ,'store']);
+Route::get('/upload/{upload}/', [UploadController::class ,'index']);
+Route::get('/upload/{upload}/edit', [UploadController::class, 'edit']);
+Route::put('/upload/{upload}', [UploadController::class, 'update']);
+Route::delete('/upload/delete/{upload}', [UploadController::class,'delete']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,5 +52,7 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+
 
 
