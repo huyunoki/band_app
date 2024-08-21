@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('musicfiles', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->id(); // 主キーID
-            $table->unsignedBigInteger('user_id'); // 外部キー: usersテーブルのID
-            $table->string('title'); // タイトル
-            $table->string('body'); // 音楽ファイルの詳細説明
-            $table->string('image_url');// ファイルパス
+            $table->string('title')->nullable(); // タイトル
+            $table->string('description')->nullable(); // 音楽ファイルの詳細説明
+            $table->string('image_url')->nullable();// ファイルパス
             $table->softDeletes();//削除日
             $table->timestamps(); // 更新日と作成日
     
-            // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('musicfiles');
+        Schema::dropIfExists('uploads');
     }
 };

@@ -24,11 +24,11 @@
                     <x-nav-link :href="route('message')" :active="request()->routeIs('index')">
                         {{ __('メッセージ画面') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('music_upload')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('upload')" :active="request()->routeIs('index')">
                         {{ __('音楽アップロード画面') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('music_listen')" :active="request()->routeIs('index')">
-                        {{ __('音楽画面') }}
+                    <x-nav-link :href="route('listen')" :active="request()->routeIs('index')">
+                        {{ __('音楽聞く画面') }}
                     </x-nav-link>
                 </div>
             </div>
