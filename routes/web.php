@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ListenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +19,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { // ルート( / )というURLにアクセスがあればgetリクエストされ無名関数が実行
+    return view('welcome');   // 無名関数を実行するとviews/welcome.blade.phpが表示される
 });
+
+
+
+Route::get('/dashboard', function () { // /dashboardにというURLにアクセスがあれば関数が実行され
+    return view('dashboard');          // views/dashboardが表示される
+})->middleware(['auth', 'verified'])->name('dashboard'); //middlewareは認証されているユーザーしかアクセスできない
+//authはユーザーをverifiedはメールアドレスを認証できているときしかアクセスできない。また、後ろの奴は名前をつけていて
+// route('dashboard')とかくとこのルートのURLを取得できる。
+
+Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
+Route::get('/schedule/index',[ScheduleController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
+Route::get('/message/index',[MessageController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
+Route::get('/upload/index',[UploadController::class, 'index'])->middleware(['auth', 'verified'])->name('upload');
+Route::get('/listen/index',[ListenController::class, 'index'])->middleware(['auth', 'verified'])->name('listen');
+
+Route::get('/upload/create', [UploadController::class, 'create']);
+Route::post('/upload/store', [UploadController::class ,'store']);
+Route::get('/upload/{upload}/', [UploadController::class ,'index']);
+Route::get('/upload/{upload}/edit', [UploadController::class, 'edit']);
+Route::put('/upload/{upload}', [UploadController::class, 'update']);
+Route::delete('/upload/delete/{upload}', [UploadController::class,'delete']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+require __DIR__.'/auth.php';
+
+
+
+

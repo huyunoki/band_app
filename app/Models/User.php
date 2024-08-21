@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class);
+    }
+    
+    public function getByMusic_upload(){
+        return $this->uploads()->with('user')->orderBy('upload_at', 'DESC');
+    }
 }
