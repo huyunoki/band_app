@@ -6,6 +6,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ListenController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,9 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/chat/{user}', [ChatController::class, 'openChat']);
+Route::post('/chat', [ChatController::class, 'sendMessage']);
 
 
 
