@@ -24,6 +24,7 @@
             <div class="welcome_message">
                 <div>メッセージ画面にようこそ{{ Auth::user()->name }}さん！！</div>
             </div>
+            <a href="/chat/{{ Auth::user()->id }}">{{ Auth::user()->name }}とチャットする</a>
         </x-app-layout>
     </body>
 </html>
