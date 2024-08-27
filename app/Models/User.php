@@ -48,7 +48,7 @@ class User extends Authenticatable
         return $this->hasMany(Upload::class);
     }
     
-    public function getByMusic_upload(){
-        return $this->uploads()->with('user')->orderBy('upload_at', 'DESC');
+    public function getByUser(int $limit_count = 5){
+        return $this->uploads()->with('user')->orderBy('upload_at', 'DESC')->paginate($limit_count);
     }
 }

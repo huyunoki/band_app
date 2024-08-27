@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ListenController;
 use App\Http\Controllers\ChatController;
@@ -32,9 +31,11 @@ Route::get('/dashboard', function () { // /dashboardにというURLにアクセ�
 //authはユーザーをverifiedはメールアドレスを認証できているときしかアクセスできない。また、後ろの奴は名前をつけていて
 // route('dashboard')とかくとこのルートのURLを取得できる。
 
+require __DIR__.'/auth.php';
+
 Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
-Route::get('/schedule/index',[ScheduleController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
-Route::get('/message/index',[MessageController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
+Route::get('/calendar/calendar',[CalendarController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
+Route::get('/message/index',[ChatController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
 Route::get('/upload/index',[UploadController::class, 'index'])->middleware(['auth', 'verified'])->name('upload');
 Route::get('/listen/index',[ListenController::class, 'index'])->middleware(['auth', 'verified'])->name('listen');
 
@@ -45,17 +46,18 @@ Route::get('/upload/{upload}/edit', [UploadController::class, 'edit']);
 Route::put('/upload/{upload}', [UploadController::class, 'update']);
 Route::delete('/upload/delete/{upload}', [UploadController::class,'delete']);
 
+ROute::get('/user/{upload}', [ListenController::class, 'user']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-require __DIR__.'/auth.php';
-
 Route::get('/chat/{user}', [ChatController::class, 'openChat']);
 Route::post('/chat', [ChatController::class, 'sendMessage']);
+
+Route::view('/calendar', 'calendar/calendar');
 
 
 

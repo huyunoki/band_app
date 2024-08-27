@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use App\Library\Chat;
 use App\Models\Room;
 use App\Models\Message;
@@ -19,9 +20,10 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return view('chat');
+    public function index(User $user){
+        $userId = Auth::id();
+        $user = User::where('id','!=', $userId)->get();
+        return view('messages.index')->with(['users' => $user]);
     }
     
     // メッセージ送信時の処理
