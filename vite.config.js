@@ -8,7 +8,8 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/index.css',
                 'resources/js/app.js',
-                
+                'resources/js/calendar.js',
+
             ],
             refresh: true,
         }),
