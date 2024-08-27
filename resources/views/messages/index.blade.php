@@ -24,7 +24,17 @@
             <div class="welcome_message">
                 <div>メッセージ画面にようこそ{{ Auth::user()->name }}さん！！</div>
             </div>
-            <a href="/chat/{{ Auth::user()->id }}">{{ Auth::user()->name }}とチャットする</a>
+            
+            
+            <div class='chat'>
+                 
+                @foreach($users as $user)
+                    <div>
+                        <a href="/chat/{{ $user->id }}">{{ $user->name }}とチャットする</a>
+                    </div>
+                @endforeach
+                
+            </div>
         </x-app-layout>
     </body>
 </html>
