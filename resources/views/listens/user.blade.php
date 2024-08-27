@@ -15,7 +15,7 @@
                 </h2>
             </x-slot>
              <div class='uploads'>
-                 
+                <p>投稿者:{{ $user->name }}</p>
                 @foreach($uploads as $upload)
                     <div>
                         <audio controls src="{{ $upload->image_url }}"></audio>
@@ -23,9 +23,11 @@
                             タイトル：{{ $upload->title }}
                         </h1>
                         <p class='description'>{{ $upload->description }}</p>
-                        <p>投稿者:{{ $upload->user->name }}</p>
                     </div>
                 @endforeach
+            </div>
+            <div class="back">
+                <a href="/listen/index">戻る</a>
             </div>
         </x-app-layout>
     </body>

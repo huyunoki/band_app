@@ -22,8 +22,7 @@
             <p class="body_error" style="color:red">{{ $errors->first('file.description') }}</p>
             <input type="submit" value="保存"/>
         </form>
-        
-        <div class="footer">
+        <div class="back">
             <a href="/upload/index">戻る</a>
         </div>
     </body>
