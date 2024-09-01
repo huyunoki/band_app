@@ -6,6 +6,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ListenController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () { // ルート( / )というURLにアクセスがあればgetリクエストされ無名関数が実行
     return view('welcome');   // 無名関数を実行するとviews/welcome.blade.phpが表示される
 });
-
-
 
 Route::get('/dashboard', function () { // /dashboardにというURLにアクセスがあれば関数が実行され
     return view('dashboard');          // views/dashboardが表示される
@@ -58,7 +57,11 @@ Route::get('/chat/{user}', [ChatController::class, 'openChat']);
 Route::post('/chat', [ChatController::class, 'sendMessage']);
 
 Route::view('/calendar', 'calendar/calendar');
-
+Route::post('/calendar/store', [EventController::class, 'store'])->name('event.store');
+Route::post('/calendar/event', [EventController::class, 'getEvent'])->name('event.get');
+Route::post('/calendar/{event}', [EventController::class, 'update'])->name('event.update');
+Route::post('/calendar/{id}/edit', [EventController::class, 'edit']);
+Route::post('/calendar/{event}/delete', [EventController::class, 'delete'])->name('event.delete');
 
 
 
