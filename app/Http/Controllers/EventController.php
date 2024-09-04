@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
     public function store(Request $request)
     {
+        Log::info('これは情報ログです');
         $event = new Event;
         // 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
         $event->start_date = date('Y-m-d', $request->input('start_date') / 1000);
         $event->end_date = date('Y-m-d', $request->input('end_date') / 1000);
         $event->name = $request->input('name');
+        $event->user_id = auth()->id();
         $event->save();
 
     }
@@ -36,6 +39,7 @@ class EventController extends Controller
             // FullCalendarの表示範囲のみ表示
             ->where('end_date', '>', $start_date)
             ->where('start_date', '<', $end_date)
+            ->where('user_id', auth()->id())
             ->get();
     }
     
@@ -44,6 +48,7 @@ class EventController extends Controller
         // 日付に変換。JavaScriptのタイムスタンプはミリ秒なので秒に変換
         $event->start_date = date('Y-m-d', $request->input('start_date') / 1000);
         $event->end_date = date('Y-m-d', $request->input('end_date') / 1000);
+        $event->user_id = auth()->id();
         $event->save();
     }
     

@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -14,7 +15,8 @@
                          ボタン押下(=submit)時にページリロードが行われないように、
                          onsubmitの設定の最後に"return false;"を追加。
                          (return false;の結果として、submitが中断され、ページリロードは行われない。）--}}
-                    <form method="post" onsubmit="onsubmit_Form(); return false;">
+                    <form method="POST" onsubmit="onsubmit_Form(); return false;">
+                        @csrf
                         メッセージ : <input type="text" id="input_message" autocomplete="off" />
                         <input type="hidden" id="chat_id" name="chat_id" value="{{ $chat->id }}"> 
                         <button type="submit" class="text-white bg-blue-700 px-5 py-2">送信</button>
@@ -91,3 +93,4 @@
         });
     </script>
 </x-app-layout>
+
