@@ -36,7 +36,7 @@ Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 
 Route::get('/calendar/calendar',[CalendarController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
 Route::get('/message/index',[ChatController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
 Route::get('/upload/index',[UploadController::class, 'index'])->middleware(['auth', 'verified'])->name('upload');
-Route::get('/listen/index',[ListenController::class, 'index'])->middleware(['auth', 'verified'])->name('listen');
+Route::get('/listen/index',[ListenController::class, 'show'])->middleware(['auth', 'verified'])->name('listen');
 
 Route::get('/upload/create', [UploadController::class, 'create']);
 Route::post('/upload/store', [UploadController::class ,'store']);
@@ -45,7 +45,8 @@ Route::get('/upload/{upload}/edit', [UploadController::class, 'edit']);
 Route::put('/upload/{upload}', [UploadController::class, 'update']);
 Route::delete('/upload/delete/{upload}', [UploadController::class,'delete']);
 
-ROute::get('/user/{upload}', [ListenController::class, 'user']);
+ROute::get('/listen/{upload}', [ListenController::class, 'user']);
+Route::post('/upload/like', [ListenController::class, 'likeUpload']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -56,7 +57,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/chat/{user}', [ChatController::class, 'openChat']);
 Route::post('/chat', [ChatController::class, 'sendMessage']);
 
-// Route::view('/calendar', 'calendar/calendar');
 Route::post('/calendar/store', [EventController::class, 'store'])->name('event.store');
 Route::post('/calendar/event', [EventController::class, 'getEvent'])->name('event.get');
 Route::post('/calendar/{event}', [EventController::class, 'update'])->name('event.update');

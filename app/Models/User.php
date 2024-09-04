@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function getByUser(int $limit_count = 5){
         return $this->uploads()->with('user')->orderBy('upload_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function likes()
+    {
+        return $this->hasMany(UploadLike::class);
+    }
 }
