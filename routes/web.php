@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/chat/{user}', [ChatController::class, 'openChat']);
 Route::post('/chat', [ChatController::class, 'sendMessage']);
 
-Route::view('/calendar', 'calendar/calendar');
+// Route::view('/calendar', 'calendar/calendar');
 Route::post('/calendar/store', [EventController::class, 'store'])->name('event.store');
 Route::post('/calendar/event', [EventController::class, 'getEvent'])->name('event.get');
 Route::post('/calendar/{event}', [EventController::class, 'update'])->name('event.update');
