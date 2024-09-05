@@ -1,7 +1,6 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -38,11 +37,7 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-            
-            <x-primary-button class="ms-3">
-                <a href='/register' >新規登録はこちら</a>
-                <!--class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"-->
-            </x-primary-button>
+            <a href='/register' style="font-weight: bold;">［新規登録はこちら］</a>
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
