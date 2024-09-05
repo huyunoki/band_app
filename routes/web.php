@@ -21,7 +21,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () { // ルート( / )というURLにアクセスがあればgetリクエストされ無名関数が実行
-    return view('welcome');   // 無名関数を実行するとviews/welcome.blade.phpが表示される
+    return view('auth/login');   // 無名関数を実行するとviews/welcome.blade.phpが表示される
+});
+Route::get('/register', function () { 
+    return view('auth/register');
+});
+Route::get('/login', function () { 
+    return view('auth/register');
 });
 
 Route::get('/dashboard', function () { // /dashboardにというURLにアクセスがあれば関数が実行され
