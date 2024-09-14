@@ -38,7 +38,7 @@ Route::get('/dashboard', function () { // /dashboardにというURLにアクセ�
 
 require __DIR__.'/auth.php';
 
-Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
+// Route::get('/post/index',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('post');
 Route::get('/calendar/calendar',[CalendarController::class, 'index'])->middleware(['auth', 'verified'])->name('schedule');
 Route::get('/message/index',[ChatController::class, 'index'])->middleware(['auth', 'verified'])->name('message');
 Route::get('/upload/index',[UploadController::class, 'index'])->middleware(['auth', 'verified'])->name('upload');

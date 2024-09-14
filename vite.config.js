@@ -9,7 +9,11 @@ export default defineConfig({
                 'resources/css/index.css',
                 'resources/js/app.js',
                 'resources/js/calendar.js',
-
+                'resources/css/upload.css',
+                'resources/css/navigation.css',
+                'resources/css/login.css',
+                'resources/css/register.css',
+                'resources/css/forgot.css',
             ],
             refresh: true,
         }),
