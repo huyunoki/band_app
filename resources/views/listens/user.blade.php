@@ -29,13 +29,9 @@
     </head>
     <body>
         <x-app-layout>
-            <x-slot name="header">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('音楽聞く画面(user別)') }}
-                </h2>
-            </x-slot>
              <div class='uploads'>
                 <p>投稿者:{{ $user->name }}</p>
+                <a href="/chat/{{ $user->id }}">{{ $user->name }}とチャットする</a>
                 @foreach($uploads as $upload)
                     <div>
                         <audio controls src="{{ $upload->image_url }}"></audio>

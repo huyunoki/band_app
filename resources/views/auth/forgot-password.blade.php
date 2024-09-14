@@ -1,25 +1,35 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>新規登録画面</title>
+        @vite(['resources/css/forgot.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                {{ __('次からは') }}
+            </h1>
+            <h1>
+                {{ __('わすれないでね？') }}
+            </h1>
+            <!-- Session Status -->
+            <x-auth-session-status class="mb-4" :status="session('status')" />
+        
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+        
+                <!-- Email Address -->
+                <div class="input-box">
+                    <x-text-input id="email" placeholder="Email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+                <x-primary-button>
+                    {{ __('Email Password Reset Link') }}
+                </x-primary-button>
+            </form>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </body>
+</html>

@@ -1,52 +1,56 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>新規登録画面</title>
+        @vite(['resources/css/register.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <div class="container">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <h1>Register</h1>
+                <!-- Name -->
+                <div class="input-box"> 
+                    <x-text-input id="name" class="" placeholder="Name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <i class="fa-solid fa-user"></i>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+                <!-- Email Address -->
+                <div class="input-box">
+                    <x-text-input id="email" class="" placeholder="Email" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                    <i class="fa-solid fa-envelope"></i>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+                <!-- Password -->
+                <div class="input-box">
+                    <x-text-input id="password" class=""
+                                    placeholder="Password"
+                                    type="password"
+                                    name="password"
+                                    required autocomplete="new-password" />
+                    <i class="fa-solid fa-lock"></i>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+                <!-- Confirm Password -->
+                <div class="input-box">
+                    <x-text-input id="password_confirmation" class=""
+                                    placeholder="Confirm Password"
+                                    type="password"
+                                    name="password_confirmation" required autocomplete="new-password" />
+                    <i class="fa-solid fa-lock"></i>
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+                <x-primary-button class="ms-4">
+                    {{ __('Register') }}
+                </x-primary-button>
+            </form>
+            <div class="login-link">
+                <p>{{ __('Already registered?') }}</p>
+                <a href='/login' style="font-weight: bold;">［ログイン画面はこちら］</a>
+            </div>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-            <a href='/login' style="font-weight: bold;">［ログイン画面はこちら］</a>
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </body>
+</html>
