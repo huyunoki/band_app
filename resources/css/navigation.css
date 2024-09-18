@@ -1,67 +1,289 @@
-/* Base styles */
-/*body {*/
-/*    font-family: 'Roboto', sans-serif;*/
-/*    background-color: #121212;*/
-/*    color: #ffffff;*/
-/*}*/
+/* 基本スタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-tap-highlight-color: #ffffff00;
+}
 
-/*nav {*/
-/*    background-color: #1f1f1f;*/
-/*    border-bottom: 2px solid #ff4081;*/
-/*}*/
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #00ffee;
+}
 
-/*nav a {*/
-/*    color: #ffffff;*/
-/*    text-decoration: none;*/
-/*    padding: 10px 15px;*/
-/*    transition: color 0.3s ease;*/
-/*}*/
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px; /* 追加: ナビゲーションバーの高さ分の余白を追加 */
+}
 
-/*nav a:hover {*/
-/*    color: #ff4081;*/
-/*}*/
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 4%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    height: 70px; /* 高さを固定 */
+}
 
-/*nav .logo img {*/
-/*    height: 50px;*/
-/*}*/
+.logo {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-/*nav .flex {*/
-/*    align-items: center;*/
-/*}*/
+.logo span {
+    color: #00ffee;
+    text-shadow: 0 0 25px #00ffee;
+}
 
-/*nav .dropdown {*/
-/*    background-color: #1f1f1f;*/
-/*    border: 1px solid #ff4081;*/
-/*}*/
+.navbar x-nav-link {
+    font-size: 2.5rem; /* 修正: 25remから2.5remに変更 */
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
 
-/*nav .dropdown a {*/
-/*    color: #ffffff;*/
-/*}*/
+.inline-flex {
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0.25rem; /* px-1 */
+    padding-top: 0.25rem; /* pt-1 */
+    border-bottom-width: 2px; /* border-b-2 */
+    font-weight: 500; /* font-medium */
+    line-height: 1.25rem; /* leading-5 */
+    outline: none; /* focus:outline-none */
+    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out; /* transition duration-150 ease-in-out */
+    margin-left: 20px;
+}
 
-/*nav .dropdown a:hover {*/
-/*    background-color: #ff4081;*/
-/*    color: #1f1f1f;*/
-/*}*/
+.inline-flex.active { /* 開いているページのボタン */
+    border-bottom-color: #00ffee;
+    color: var(--main-color);
+    text-shadow: 0 0 25px #00ffee;
+}
 
-/*nav .hamburger {*/
-/*    color: #ffffff;*/
-/*}*/
+.inline-flex.active:focus {
+    border-bottom-color: #4c51bf; /* focus:border-indigo-700 */
+}
 
-/*nav .hamburger:hover {*/
-/*    color: #ff4081;*/
-/*}*/
+.inline-flex.inactive {
+    border-bottom-color: transparent; /* border-transparent */
+    color: white; /* text-gray-500 */
+}
 
-/* Responsive styles */
-/*@media (max-width: 768px) {*/
-/*    nav .hidden {*/
-/*        display: none;*/
-/*    }*/
+.inline-flex.inactive:hover {
+    color: #374151; /* hover:text-gray-700 */
+    border-bottom-color: #d1d5db; /* hover:border-gray-300 */
+}
 
-/*    nav .block {*/
-/*        display: block;*/
-/*    }*/
+.inline-flex.inactive:focus {
+    color: #374151; /* focus:text-gray-700 */
+    border-bottom-color: #d1d5db; /* focus:border-gray-300 */
+}
 
-/*    nav .dropdown {*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--main-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    color: var(--main-color);
+    background-color: black;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    box-shadow: 0 0 25px var(--main-color);
+    cursor: pointer;
+}
+
+.dropdown-trigger:hover {
+    color: white;
+    background-color: var(--main-color);
+}
+
+.dropdown-icon {
+    margin-left: 0.25rem;
+}
+
+.icon {
+    height: 1rem;
+    width: 1rem;
+}
+
+.responsive-menu {
+    display: none;
+}
+
+.responsive-menu.block {
+    display: block;
+}
+
+.nav-links {
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+    space-y: 0.25rem;
+}
+
+.settings-options {
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+.user-info {
+    padding-left: 1rem;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1F2937;
+}
+
+.user-email {
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.settings-links {
+    margin-top: 0.75rem;
+    space-y: 0.25rem;
+}
+
+@media (max-width: 1200px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .navbar x-nav-link {
+        font-size: 2rem;
+    }
+
+    .inline-flex {
+        font-size: 1.25rem; /* Increased from 1rem */
+    }
+
+    .dropdown-trigger {
+        font-size: 0.75rem;
+    }
+
+    .hamburger-button {
+        font-size: 0.75rem;
+    }
+
+    .user-name {
+        font-size: 0.75rem;
+    }
+
+    .user-email {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .navbar x-nav-link {
+        font-size: 1.5rem;
+    }
+
+    .inline-flex {
+        font-size: 1rem; /* Increased from 0.875rem */
+    }
+
+    .dropdown-trigger {
+        font-size: 0.625rem;
+    }
+
+    .hamburger-button {
+        font-size: 0.625rem;
+    }
+
+    .user-name {
+        font-size: 0.625rem;
+    }
+
+    .user-email {
+        font-size: 0.625rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .navbar x-nav-link {
+        font-size: 1.25rem;
+    }
+
+    .inline-flex {
+        font-size: 0.75rem; /* Increased from 0.625rem */
+    }
+
+    .dropdown-trigger {
+        font-size: 0.5rem;
+    }
+
+    .hamburger-button {
+        font-size: 0.5rem;
+    }
+
+    .user-name {
+        font-size: 0.5rem;
+    }
+
+    .user-email {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .navbar x-nav-link {
+        font-size: 1rem;
+    }
+
+    .inline-flex {
+        font-size: 0.625rem; /* Increased from 0.5rem */
+    }
+
+    .dropdown-trigger {
+        font-size: 0.375rem;
+    }
+
+    .hamburger-button {
+        font-size: 0.375rem;
+    }
+
+    .user-name {
+        font-size: 0.375rem;
+    }
+
+    .user-email {
+        font-size: 0.375rem;
+    }
+}
