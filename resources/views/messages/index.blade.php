@@ -10,7 +10,6 @@
                 font-size: 3em;
                 font-weight: bold;
                 text-align: center;
-                margin-top: 20px;
             }
         </style>
     </head>

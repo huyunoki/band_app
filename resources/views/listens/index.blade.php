@@ -8,24 +8,6 @@
         <!--<link rel="stylesheet" href="/../../css/index.css">-->
         @vite(['resources/css/index.css'])
         <script src="https://kit.fontawesome.com/18f505b1d5.js" crossorigin="anonymous"></script>
-        <style>
-            /* いいね押下時の星の色 */
-            .liked{
-                color:orangered;
-                transition:.2s;
-            }
-            .flexbox{
-                align-items: center;
-                display: flex;
-            }
-            .count-num{
-                font-size: 20px;
-                margin-left: 10px;
-            }
-            .fa-star{
-                font-size: 30px;
-            }
-        </style>
     </head>
     <x-app-layout>
         <body>
