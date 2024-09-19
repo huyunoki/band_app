@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UploadLike::class);
     }
+    
+    public function urls()
+    {
+        return $this->hasMany(Url::class);
+    }
 }

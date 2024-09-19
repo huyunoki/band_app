@@ -1,17 +1,50 @@
-<x-app-layout>
-    <div class="bg-scroll" style="background-image: url('public/images/logo.png');"></div>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ホーム画面</title>
+        @vite(['resources/css/dashboard.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <x-app-layout>
+            <div class="welcome_message">
+                <p>ようこそ{{ Auth::user()->name }}さん</p>
             </div>
-        </div>
-    </div>
-    <div class="text-5xl font-extrabold ...">
-  <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-    Hello world
-  </span>
-</div>
-</x-app-layout>
+            <h1>Enter your Instagram and LINE URLs</h1>
+
+            @if (session('success'))
+                <div>
+                    {{ session('success') }}
+                </div>
+            @endif
+        
+            <form action="/dashboard" method="POST">
+                @csrf
+                <div>
+                    <label for="line">LINE URL:</label>
+                    <input type="url" name="url[line]">
+                </div>
+                <div>
+                    <label for="instagram">Instagram URL:</label>
+                    <input type="url" name="url[instagram]">
+                </div>
+                <input type="submit" value="store">
+            </form>
+        
+            <h2>Instagram URLs</h2>
+            <ul>
+                @foreach(App\Models\Url::where('user_id', auth()->id())->whereNotNull('instagram')->get() as $url)
+                    <li>Instagram: {{ $url->instagram }}</li>
+                @endforeach
+            </ul>
+        
+            <h2>LINE URLs</h2>
+            <ul>
+                @foreach(App\Models\Url::where('user_id', auth()->id())->whereNotNull('line')->get() as $url)
+                    <li>LINE: {{ $url->line }}</li>
+                @endforeach
+            </ul>
+        </x-app-layout>
+    </body>
+</html>

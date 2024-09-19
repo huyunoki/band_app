@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/css/login.css',
                 'resources/css/register.css',
                 'resources/css/forgot.css',
+                'resources/css/dashboard.css',
             ],
             refresh: true,
         }),

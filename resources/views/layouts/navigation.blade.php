@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @vite(['resources/css/navigation.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="specific-view">
         <!-- Primary Navigation Menu -->
         <div class="container">
             <!--<div class="flex">-->
