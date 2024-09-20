@@ -16,7 +16,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    padding-top: 70px; /* 追加: ナビゲーションバーの高さ分の余白を追加 */
+    padding-top: 70px;
 }
 
 .header {
@@ -30,7 +30,7 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 5;
-    height: 70px; /* 高さを固定 */
+    height: 70px;
 }
 
 .logo {
@@ -47,7 +47,7 @@ body {
 }
 
 .navbar x-nav-link {
-    font-size: 2.5rem; /* 修正: 25remから2.5remに変更 */
+    font-size: 2.5rem;
     color: white;
     margin-left: 4rem;
     font-weight: 500;
@@ -58,13 +58,13 @@ body {
 .inline-flex {
     display: inline-flex;
     align-items: center;
-    padding-left: 0.25rem; /* px-1 */
-    padding-top: 0.25rem; /* pt-1 */
-    border-bottom-width: 2px; /* border-b-2 */
-    font-weight: 500; /* font-medium */
-    line-height: 1.25rem; /* leading-5 */
-    outline: none; /* focus:outline-none */
-    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out; /* transition duration-150 ease-in-out */
+    padding-left: 0.25rem;
+    padding-top: 0.25rem;
+    border-bottom-width: 2px;
+    font-weight: 500;
+    line-height: 1.25rem;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out;
     margin-left: 20px;
 }
 
@@ -75,22 +75,22 @@ body {
 }
 
 .inline-flex.active:focus {
-    border-bottom-color: #4c51bf; /* focus:border-indigo-700 */
+    border-bottom-color: #4c51bf;
 }
 
 .inline-flex.inactive {
-    border-bottom-color: transparent; /* border-transparent */
-    color: white; /* text-gray-500 */
+    border-bottom-color: transparent;
+    color: white;
 }
 
 .inline-flex.inactive:hover {
-    color: #374151; /* hover:text-gray-700 */
-    border-bottom-color: #d1d5db; /* hover:border-gray-300 */
+    color: #374151;
+    border-bottom-color: #d1d5db;
 }
 
 .inline-flex.inactive:focus {
-    color: #374151; /* focus:text-gray-700 */
-    border-bottom-color: #d1d5db; /* focus:border-gray-300 */
+    color: #374151;
+    border-bottom-color: #d1d5db;
 }
 
 .dropdown-container {
@@ -178,7 +178,7 @@ body {
     }
 
     .inline-flex {
-        font-size: 1.25rem; /* Increased from 1rem */
+        font-size: 1.25rem;
     }
 
     .dropdown-trigger {
@@ -208,7 +208,7 @@ body {
     }
 
     .inline-flex {
-        font-size: 1rem; /* Increased from 0.875rem */
+        font-size: 1rem;
     }
 
     .dropdown-trigger {
@@ -238,7 +238,7 @@ body {
     }
 
     .inline-flex {
-        font-size: 0.75rem; /* Increased from 0.625rem */
+        font-size: 0.75rem;
     }
 
     .dropdown-trigger {
@@ -268,7 +268,7 @@ body {
     }
 
     .inline-flex {
-        font-size: 0.625rem; /* Increased from 0.5rem */
+        font-size: 0.625rem;
     }
 
     .dropdown-trigger {

@@ -11,27 +11,53 @@ class UrlController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        // ユーザーのLINEとInstagramのURLを取得
+        $urls = Url::where('user_id', auth()->id())
+                    ->where(function($query) {
+                        $query->whereNotNull('line')
+                              ->orWhereNotNull('instagram');
+                    })
+                    ->get();
+
+        // LINEとInstagramのURLを個別に取得
+        $lineUrl = $urls->whereNotNull('line')->pluck('line')->first();
+        $instagramUrl = $urls->whereNotNull('instagram')->pluck('instagram')->first();
+
+        return view('dashboard', [
+            'lineUrl' => $lineUrl,
+            'instagramUrl' => $instagramUrl
+        ]);
     }
 
     public function store(UrlRequest $request, Url $url)
     {
         $input = $request->input('url');
-
-        // Instagram URLが存在する場合、既存のInstagram URLを削除
+        $userId = auth()->id();
+    
+        // Check if Instagram URL is provided
         if (isset($input['instagram'])) {
-            Url::where('user_id', auth()->id())->whereNotNull('instagram')->delete();
+            // Delete existing Instagram URL for the user
+            Url::where('user_id', $userId)->whereNotNull('instagram')->delete();
+    
+            // Save new Instagram URL
+            $instagramUrl = new Url();
+            $instagramUrl->user_id = $userId;
+            $instagramUrl->instagram = $input['instagram'];
+            $instagramUrl->save();
         }
-
-        // LINE URLが存在する場合、既存のLINE URLを削除
+    
+        // Check if LINE URL is provided
         if (isset($input['line'])) {
-            Url::where('user_id', auth()->id())->whereNotNull('line')->delete();
+            // Delete existing LINE URL for the user
+            Url::where('user_id', $userId)->whereNotNull('line')->delete();
+    
+            // Save new LINE URL
+            $lineUrl = new Url();
+            $lineUrl->user_id = $userId;
+            $lineUrl->line = $input['line'];
+            $lineUrl->save();
         }
-
-        // 新しいURLを保存
-        $input['user_id'] = auth()->id();
-        $url->fill($input)->save();
-
-        return redirect('/dashboard');
+    
+        return redirect('/dashboard')->with('success', 'URLが更新されました。');
     }
 }
