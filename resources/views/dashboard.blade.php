@@ -8,43 +8,45 @@
     </head>
     <body>
         <x-app-layout>
-            <div class="welcome_message">
-                <p>ようこそ{{ Auth::user()->name }}さん</p>
-            </div>
-            <h1>Enter your Instagram and LINE URLs</h1>
-
-            @if (session('success'))
-                <div>
-                    {{ session('success') }}
-                </div>
-            @endif
-        
-            <form action="/dashboard" method="POST">
-                @csrf
-                <div>
-                    <label for="line">LINE URL:</label>
-                    <input type="url" name="url[line]">
-                </div>
-                <div>
-                    <label for="instagram">Instagram URL:</label>
-                    <input type="url" name="url[instagram]">
-                </div>
-                <input type="submit" value="store">
-            </form>
-        
-            <h2>Instagram URLs</h2>
-            <ul>
-                @foreach(App\Models\Url::where('user_id', auth()->id())->whereNotNull('instagram')->get() as $url)
-                    <li>Instagram: {{ $url->instagram }}</li>
-                @endforeach
-            </ul>
-        
-            <h2>LINE URLs</h2>
-            <ul>
-                @foreach(App\Models\Url::where('user_id', auth()->id())->whereNotNull('line')->get() as $url)
-                    <li>LINE: {{ $url->line }}</li>
-                @endforeach
-            </ul>
+            <section class="home" id="home">
+                <div class="home-content">
+                    <h1>
+                        ようこそ
+                        <span>Band Man</span>
+                    </h1>
+                    <h2 class="text-animation">
+                        <span>{{ Auth::user()->name }}</span>
+                        の音楽をここで始めよう。
+                    </h2>
+                    
+                    <div class="social-icons">
+                        @if($lineUrl)
+                            <a href="{{ $lineUrl }}" target="_blank">
+                                <i class="fa-brands fa-line"></i>
+                            </a>
+                        @endif
+                        @if($instagramUrl)
+                            <a href="{{ $instagramUrl }}" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        @endif
+                    
+                        <form action="/dashboard" method="POST">
+                            @csrf
+                            <div class="form">
+                                <div class="form-group">
+                                    <label for="line" class="input-label">LINE URL:</label>
+                                    <input type="url" name="url[line]" class="input-field">
+                                </div>
+                                <div class="form-group">
+                                    <label for="instagram">Instagram URL:</label>
+                                    <input type="url" name="url[instagram]" class="input-field">
+                                </div>
+                                <input type="submit" value="store" class="submit-button">
+                            </div>
+                        </form>
+                    </div>
+            </section>
         </x-app-layout>
     </body>
 </html>
