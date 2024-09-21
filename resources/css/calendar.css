@@ -1,0 +1,42 @@
+#calendar {
+    margin: 0 auto;
+    color: #00ffee;
+    text-shadow: 0 0 10px #00ffee;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.fc-toolbar {
+    color: #00ffee;
+    text-shadow: 0 0 10px #00ffee;
+    padding: 10px;
+}
+
+.fc-toolbar-title {
+    font-size: 3rem !important;
+    margin-right: 10rem !important;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0 !important;
+}
+
+.fc-daygrid-event {
+    color: red;
+    background-color: #00ffee;
+    border: none;
+    padding: 1px;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out
+}
+
+.fc-daygrid-event:hover {
+    color: red;
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 0 15px #00ffee;
+    background-color: #00ffee;
+}
+
+.fc-daygrid-event .fc-event-title {
+    font-size: 1rem;
+    color: black !important;
+}
