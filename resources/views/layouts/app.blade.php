@@ -17,7 +17,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen">
+        <div class="">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

@@ -24,9 +24,17 @@
                             <a href="{{ $lineUrl }}" target="_blank">
                                 <i class="fa-brands fa-line"></i>
                             </a>
+                            @else
+                            <a>
+                                <i class="fa-brands fa-line"></i>
+                            </a>
                         @endif
                         @if($instagramUrl)
                             <a href="{{ $instagramUrl }}" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            @else
+                            <a>
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         @endif

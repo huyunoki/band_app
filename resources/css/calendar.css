@@ -1,8 +1,11 @@
+body {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
 #calendar {
     margin: 0 auto;
     color: #00ffee;
     text-shadow: 0 0 10px #00ffee;
-    background-color: rgba(0, 0, 0, 0.95);
 }
 
 .fc-toolbar {
