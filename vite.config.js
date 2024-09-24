@@ -16,6 +16,8 @@ export default defineConfig({
                 'resources/css/forgot.css',
                 'resources/css/dashboard.css',
                 'resources/css/calendar.css',
+                'resources/css/message.css',
+                'resources/css/chat.css',
             ],
             refresh: true,
         }),

@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0.95);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.welcome_message {
+    color: #00ffee;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 6rem;
+    font-weight: bold; /* 太字 */
+    border-radius: 10px; /* 角を丸く */
+    text-align: center; /* 中央揃え */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+    animation: fadeIn 2s ease-in-out; /* フェードインアニメーション */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat_user {
+    font-size: 2rem;
+    color: #00ffee;
+    background: transparent;
+    border: 2px solid #00ffee;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 50rem;
+    box-shadow: 0 0px 50px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.4s, box-shadow 0.2s;
+}
+
+.chat_user:hover {
+    color: white;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 0 25px #00ffee;
+    background-color: #00ffee;
+}
+
+.chat a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ffee
+}
+
+.chat a:hover {
+    color: white;
+    text-shadow: 0 0 10px #00ffee
+}
+
+.chat_user_name {
+    margin: 0 auto;
+}
