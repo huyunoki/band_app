@@ -25,7 +25,7 @@ body {
     width: 10000px;
     text-align: center;
     margin: 0;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .listen-item:hover {
@@ -50,8 +50,21 @@ body {
 
 .listen-item .description {
     color: #00ffee;
-    margin: 10px 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: max-height 0.3s ease;
+    max-height: 4.5em;
 }
+
+.listen-item .description.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
+}
+
 
 .listen-item .actions {
     display: flex;
@@ -62,11 +75,20 @@ body {
 
 .listen-item a {
     color: white;
-    text-decoration: none;
     position: absolute;
     top: 10px;
     left: 10px;
-    
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.listen-item a:hover {
+    color: white;
+    text-decoration: underline;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
 }
 
 .listen-item button {
@@ -83,23 +105,6 @@ body {
     margin: 20px 0;
 }
 
-.listen-item .description {
-    color: #00ffee;
-    margin: 10px 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    transition: max-height 0.3s ease;
-    max-height: 4.5em;
-}
-
-.listen-item .description.expanded {
-    -webkit-line-clamp: unset;
-    max-height: none;
-}
-
 .listen-item .toggle-button {
     color: #00ffee;
     cursor: pointer;
@@ -108,8 +113,10 @@ body {
 }
 
 .liked {
-    color: orangered;
-    transition: .2s;
+    color: #00ffee;
+    transition: .5s;
+    box-shadow: 0 0 100px #00ffee;
+    transform: scale(1.5)
 }
 
 .flexbox {

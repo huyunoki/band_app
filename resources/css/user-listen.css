@@ -50,7 +50,19 @@ body {
 
 .listen-item .description {
     color: #00ffee;
-    margin: 10px 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: max-height 0.3s ease;
+    max-height: 4.5em;
+}
+
+.listen-item .description.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
 }
 
 .listen-item .actions {
@@ -83,23 +95,6 @@ body {
     margin: 20px 0;
 }
 
-.listen-item .description {
-    color: #00ffee;
-    margin: 10px 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    transition: max-height 0.3s ease;
-    max-height: 4.5em;
-}
-
-.listen-item .description.expanded {
-    -webkit-line-clamp: unset;
-    max-height: none;
-}
-
 .listen-item .toggle-button {
     color: #00ffee;
     cursor: pointer;
@@ -108,8 +103,10 @@ body {
 }
 
 .liked {
-    color: orangered;
-    transition: .2s;
+    color: #00ffee;
+    transition: .5s;
+    box-shadow: 0 0 100px #00ffee;
+    transform: scale(1.5)
 }
 
 .flexbox {

@@ -77,39 +77,8 @@ body {
 
 .upload-item .description {
     color: #00ffee;
-    margin: 10px 0;
-}
-
-.upload-item .actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.upload-item .edit a {
-    color: #2196F3;
-    text-decoration: none;
-}
-
-.upload-item button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.paginate {
-    text-align: center;
-    margin: 20px 0;
-}
-
-
-.upload-item .description {
-    color: #00ffee;
-    margin: 10px 0;
+    font-weight: bold;
+    margin-bottom: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -122,6 +91,53 @@ body {
 .upload-item .description.expanded {
     -webkit-line-clamp: unset; /* 行数制限を解除 */
     max-height: none; /* 高さ制限を解除 */
+}
+
+.upload-item .actions {
+    display: flex;
+        justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.upload-item .edit a {
+    background-color: black;
+    color: #00ffee;
+    border: #00ffee;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.upload-item .edit a:hover {
+    background-color: #00ffee;
+    color: white;
+}
+
+.upload-item button {
+    background-color: black;
+    color: #00ffee;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.upload-item button:hover {
+    background-color: red;
+    color: white;
+}
+
+
+.paginate {
+    text-align: center;
+    margin: 20px 0;
 }
 
 .upload-item .toggle-button {
