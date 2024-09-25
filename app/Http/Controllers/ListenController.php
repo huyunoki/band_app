@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Upload;
 use App\Models\User;
 use App\Models\UploadLike;
+use App\Models\Url;
 
 class ListenController extends Controller
 {
@@ -22,12 +23,21 @@ class ListenController extends Controller
     
     public function user($userId) 
     {
-        $user = User::findOrFail($userId); //findOrFailはして逸されたもの以外を無視する
+        $user = User::findOrFail($userId); 
         $uploads = $user->uploads; 
         $likedUploads = auth()->user()->likes->pluck('upload_id')->toArray();
-
-        return view('listens.user', compact('user', 'uploads', 'likedUploads'));
+        
+        $url = Url::where('user_id', $userId)->first();
+        $line = $url ? $url->line : null;
+    $instagram = $url ? $url->instagram : null;
+        return view('listens.user')->with(['user' => $user,
+                                            'uploads' => $uploads,
+                                            'likedUploads' => $likedUploads,
+                                            'line' => $line,
+                                            'instagram' => $instagram]
+                                            );
     }
+
     
     public function likeUpload(Request $request)
     {

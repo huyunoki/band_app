@@ -18,6 +18,8 @@ export default defineConfig({
                 'resources/css/calendar.css',
                 'resources/css/message.css',
                 'resources/css/chat.css',
+                'resources/css/listen.css',
+                'resources/css/user-listen.css',
             ],
             refresh: true,
         }),

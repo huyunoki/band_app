@@ -30,34 +30,29 @@ class UrlController extends Controller
     }
 
     public function store(UrlRequest $request, Url $url)
-    {
-        $input = $request->input('url');
-        $userId = auth()->id();
-    
-        // Check if Instagram URL is provided
-        if (isset($input['instagram'])) {
-            // Delete existing Instagram URL for the user
-            Url::where('user_id', $userId)->whereNotNull('instagram')->delete();
-    
-            // Save new Instagram URL
-            $instagramUrl = new Url();
-            $instagramUrl->user_id = $userId;
-            $instagramUrl->instagram = $input['instagram'];
-            $instagramUrl->save();
-        }
-    
-        // Check if LINE URL is provided
-        if (isset($input['line'])) {
-            // Delete existing LINE URL for the user
-            Url::where('user_id', $userId)->whereNotNull('line')->delete();
-    
-            // Save new LINE URL
-            $lineUrl = new Url();
-            $lineUrl->user_id = $userId;
-            $lineUrl->line = $input['line'];
-            $lineUrl->save();
-        }
-    
-        return redirect('/dashboard')->with('success', 'URLが更新されました。');
+{
+    $input = $request->input('url');
+    $userId = auth()->id();
+
+    // 既存のURLレコードを取得または新規作成
+    $userUrl = Url::firstOrNew(['user_id' => $userId]);
+
+    // Instagram URLが提供されている場合
+    if (isset($input['instagram'])) {
+        // Instagram URLを更新
+        $userUrl->instagram = $input['instagram'];
     }
+
+    // LINE URLが提供されている場合
+    if (isset($input['line'])) {
+        // LINE URLを更新
+        $userUrl->line = $input['line'];
+    }
+
+    // URLレコードを保存
+    $userUrl->save();
+
+    return redirect('/dashboard')->with('success', 'URLが更新されました。');
+}
+
 }
