@@ -5,42 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>音楽聞く画面</title>
-        <!--<link rel="stylesheet" href="/../../css/index.css">-->
-        @vite(['resources/css/index.css'])
+        @vite(['resources/css/listen.css', 'resources/js/app.js'])
         <script src="https://kit.fontawesome.com/18f505b1d5.js" crossorigin="anonymous"></script>
-        <style>
-            /* いいね押下時の星の色 */
-            .liked{
-                color:orangered;
-                transition:.2s;
-            }
-            .flexbox{
-                align-items: center;
-                display: flex;
-            }
-            .count-num{
-                font-size: 20px;
-                margin-left: 10px;
-            }
-            .fa-star{
-                font-size: 30px;
-            }
-        </style>
     </head>
-    <x-app-layout>
-        <body>
-            <div class='uploads'>
+    <body>
+        <x-app-layout>
+            <div class='listens'>
                 @foreach($uploads as $upload)
-                    <div>
-                        <audio controls src="{{ $upload->image_url }}"></audio>
-                        <h1 class="font-medium">
-                            タイトル：{{ $upload->title }}
-                        </h1>
-                        <p class='description'>{{ $upload->description }}</p>
+                    <div class="listen-item">
                         <a href="/listen/{{ $upload->user->id }}">投稿者:{{ $upload->user->name }}</a>
-                        <div><p>{{$upload->content}}</p></div> 
                         @if($upload->isLikedByAuthUser())
-                            {{-- こちらがいいね済の際に表示される方で、likedクラスが付与してあることで星に色がつきます --}}
                             <div class="flexbox">
                                 <i class="fa-solid fa-thumbs-up like-btn liked" id={{$upload->id}}></i>
                                 <p class="count-num">{{$upload->likes->count()}}</p>
@@ -51,6 +25,11 @@
                                 <p class="count-num">{{$upload->likes->count()}}</p>
                             </div>
                         @endif
+                        <h1 class="title">
+                            {{ $upload->title }}
+                        </h1>
+                        <p class='description'>{{ $upload->description }}</p>
+                        <audio controls src="{{ $upload->image_url }}"></audio>
                     </div>
                 @endforeach
             </div>

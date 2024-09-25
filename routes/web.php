@@ -60,7 +60,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // 聴く用
     Route::get('/listen/index', [ListenController::class, 'show'])->name('listen');
-    Route::get('/listen/{upload}', [ListenController::class, 'user']);
+    Route::get('/listen/{userId}', [ListenController::class, 'user']);
 
     // プロファイル
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

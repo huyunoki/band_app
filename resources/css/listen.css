@@ -3,46 +3,20 @@ body {
     background-color: rgba(0, 0, 0, 0.95);
     margin: 0;
     padding: 0 3rem;
-}
-
-.uploads-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.create-button {
-    font-size: 3rem;
-    text-align: center;
-    margin: 30px 0;
-    width: calc(100% - 4rem);
-    padding: .8rem;
-    border: 2px solid #00ffee;
-    border-radius: 8px;
-    color: #00ffee;
-    cursor: pointer;
-    transition: .3s ease-in-out;
-    font-weight: bold;
-    text-shadow: 0 0 2px white;
-}
-
-.create-button:hover {
     color: white;
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 0 25px #00ffee;
-    background-color: #00ffee;
 }
 
-.uploads {
+.listens {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* 全体を中央に寄せる */
+    justify-content: center;
     gap: 20px;
     justify-content: flex-start;
+    padding-top: 1rem;
 }
 
-
-.upload-item {
+.listen-item {
+    position: relative; /* Add this line */
     background-color: rgba(0, 0, 0, 0.95);
     border: 2px solid #00ffee;
     border-radius: 10px;
@@ -54,11 +28,11 @@ body {
     transition: .3s ease-in-out;
 }
 
-.upload-item:hover {
+.listen-item:hover {
     box-shadow: 0 0 25px #00ffee;
 }
 
-.upload-item audio {
+.listen-item audio {
     width: 100%;
     margin-bottom: 10px;
     background-color: black;
@@ -66,8 +40,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
 }
 
-
-.upload-item .title {
+.listen-item .title {
     color: white;
     text-shadow: 0 0 10px #00ffee;
     font-size: 3rem;
@@ -75,24 +48,28 @@ body {
     font-weight: bold;
 }
 
-.upload-item .description {
+.listen-item .description {
     color: #00ffee;
     margin: 10px 0;
 }
 
-.upload-item .actions {
+.listen-item .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
 }
 
-.upload-item .edit a {
-    color: #2196F3;
+.listen-item a {
+    color: white;
     text-decoration: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    
 }
 
-.upload-item button {
+.listen-item button {
     background-color: #f44336;
     color: white;
     border: none;
@@ -106,27 +83,59 @@ body {
     margin: 20px 0;
 }
 
-
-.upload-item .description {
+.listen-item .description {
     color: #00ffee;
     margin: 10px 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 表示する行数を制限する */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     transition: max-height 0.3s ease;
-    max-height: 4.5em; /* 3行分の高さ */
+    max-height: 4.5em;
 }
 
-.upload-item .description.expanded {
-    -webkit-line-clamp: unset; /* 行数制限を解除 */
-    max-height: none; /* 高さ制限を解除 */
+.listen-item .description.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
 }
 
-.upload-item .toggle-button {
+.listen-item .toggle-button {
     color: #00ffee;
     cursor: pointer;
     text-decoration: underline;
     margin-top: 10px;
 }
+
+.liked {
+    color: orangered;
+    transition: .2s;
+}
+
+.flexbox {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.count-num {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.fa-star {
+    font-size: 30px;
+}
+
+.paginate {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.paginate .page-item {
+    display: inline-block;
+}
+
