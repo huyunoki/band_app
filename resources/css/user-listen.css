@@ -6,6 +6,17 @@ body {
     color: white;
 }
 
+.chat-button a {
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.chat-button a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
 .listens {
     display: flex;
     flex-wrap: wrap;
@@ -128,7 +139,7 @@ body {
 
 .paginate {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     gap: 10px;
 }
 
@@ -136,9 +147,34 @@ body {
     display: inline-block;
 }
 
+.user-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.user-content {
+    color: white;
+    text-align: center;
+    flex-grow: 0;
+    font-size: 5rem;
+    text-shadow: 0 0 7px #00ffee;
+    font-weight: bold;
+}
+
+.user-content span {
+    color: #00ffee;
+    text-shadow: 0 0 7px white;
+}
+
+
 .social-icons {
     display: flex;
     align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 0;
 }
 
 .social-icons a {
@@ -160,15 +196,4 @@ body {
     transform: scale(1.3) translateY(-5px);
     box-shadow: 0 0 25px #00ffee;
     background-color: #00ffee;
-}
-
-.user-content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.user-content {
-    text-align: center;
 }
