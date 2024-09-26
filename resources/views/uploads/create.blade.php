@@ -2,28 +2,31 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>音楽作成ページ</title>
+        @vite(['resources/css/upload-create.css', 'resources/js/app.js'])
     </head>
     <body>
-        <h1>Blog Name</h1>
-        
-        
-        <!-- formタグにenctypeを追加 -->
-        <form action="/upload/store" method="POST" enctype="multipart/form-data"><!--enctypeはファイルを送信する際の形式を指定-->
-            @csrf
-            <h2>曲名</h2>
-            <input type="text" name="file[title]" placeholder="曲名"/>
-            <p class="title_error" style="color:red">{{ $errors->first('file.title') }}</p>
-            <div class="image">
-                <input type="file" name="music">
-            </div>
-            <h2>説明</h2>
-            <input type='text' name="file[description]" placeholder="曲に込めた思いはなんですか">
-            <p class="body_error" style="color:red">{{ $errors->first('file.description') }}</p>
-            <input type="submit" value="保存"/>
-        </form>
-        <div class="back">
-            <a href="/upload/index">戻る</a>
-        </div>
+        <x-app-layout>
+            <form action="/upload/store" method="POST" enctype="multipart/form-data" class="upload-form">
+                @csrf
+                <div class="form-group">
+                    <h2>曲名</h2>
+                    <input type="text" name="file[title]"/>
+                    <p class="title_error">{{ $errors->first('file.title') }}</p>
+                </div>
+                <div class="form-group">
+                    <h2>説明</h2>
+                    <input type='text' name="file[description]">
+                    <p class="body_error">{{ $errors->first('file.description') }}</p>
+                </div>
+                <div class="form-group">
+                    <h2>音楽ファイル</h2>
+                    <input type="file" name="music">
+                </div>
+                <div class="form-submit">
+                    <input type="submit" value="投稿">
+                </div>
+            </form>
+        </x-app-layout>
     </body>
 </html>
