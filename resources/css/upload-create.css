@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.95);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.upload-form {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 20px;
+    border: 2px solid #00ffee;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffee;
+    transition: 0.3s ease-in-out;
+}
+
+.upload-form:hover {
+    box-shadow: 0 0 20px #00ffee;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.form-group h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ffee;
+}
+
+input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #00ffee;
+    border-radius: 4px;
+    outline: none; 
+    transition: 0.3s ease-in-out;
+    color: black;
+    background-color: white;
+}
+
+input[type="text"]:focus, input[type="file"]:focus {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-color: #00ffee;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #00ffee;
+}
+
+.form-submit {
+    text-align: center;
+}
+
+input[type="submit"] {
+    width: 50%;
+    background-color: black;
+    color: white;
+    border: 3px solid #00ffee;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    margin-top: 3px;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #00ffee;
+}
+
+input[type="submit"]:hover {
+    background-color: #00ffee;
+    box-shadow: 0 0 30px #00ffee;
+}
+
+.title_error, .body_error {
+    color: white;
+    font-size: 1em;
+    text-align: left;
+    height: 1em;
+}
