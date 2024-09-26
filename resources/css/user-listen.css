@@ -27,7 +27,7 @@ body {
 }
 
 .listen-item {
-    position: relative; /* Add this line */
+    position: relative;
     background-color: rgba(0, 0, 0, 0.95);
     border: 2px solid #00ffee;
     border-radius: 10px;
@@ -47,8 +47,8 @@ body {
     width: 100%;
     margin-bottom: 10px;
     background-color: black;
-    border-radius: 10px; /* 角を丸くする */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .listen-item .title {
