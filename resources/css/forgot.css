@@ -10,8 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('https://codetheworld.io/wp-content/uploads/2024/09/bg.jpg')
-    no-repeat;
+    background: rgba(0, 0, 0, 0.95);
     background-size: cover;
     background-position: center;
 }
@@ -19,17 +18,23 @@ body {
 .container {
     width: 540px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid #00ffee;
     backdrop-filter: blur(18px);
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px #00ffee;
     color: #fff;
     border-radius: 10px;
     padding: 15px 40px;
+    transition: 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 0 0 30px #00ffee;
 }
 
 h1 {
     font-size: 48px;
     text-align: center;
+    text-shadow: 0 0 10px #00ffee;
 }
 
 .input-box {
@@ -50,7 +55,13 @@ h1 {
     font-size: 28px;
     color: #fff;
     padding: 20px 45px 20px 20px;
+    transition: 0.3s ease-in-out;
 }
+
+.input-box input:focus {
+    box-shadow: 0 0 15px #00ffee;
+}
+
 
 .input-box i {
     position: absolute;
@@ -91,16 +102,24 @@ h1 {
 .btn {
     width: 100%;
     height: 55px;
-    background: #fff;
-    color: #333;
-    border: none;
+    background: black;
+    color: white;
+    text-shadow: 0 0 10px #00ffee;
+    border: 2px solid #00ffee;
     outline: none;
     border-radius: 5px;
     box-decoration-break: 0px 0px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 28px;
     font-weight: 600;
+    transition: 0.3s ease-in-out;
 }
+
+.btn:hover {
+    box-shadow: 0 0 30px #00ffee;
+    background: #00ffee;
+}
+
 
 .register-link {
     font-size: 15px;
