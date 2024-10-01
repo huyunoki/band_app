@@ -14,19 +14,20 @@
                 <div class='form-group'>
                     <h2>曲名</h2>
                     <input type='text' name='file[title]' value="{{ $uploads->title }}">
-                    <p class="title_error" style="color:red">{{ $errors->first('file.title') }}</p>
+                    <p class="title_error">{{ $errors->first('file.title') }}</p>
                 </div>
                 <div class='form-group'>
                     <h2>説明</h2>
                     <input type='text' name='file[description]' value="{{ $uploads->description }}">
-                    <p class="body_error" style="color:red">{{ $errors->first('file.description') }}</p>
+                    <p class="body_error">{{ $errors->first('file.description') }}</p>
                 </div>
                 <div class="form-group">
-                    <h2>音楽ファイル</h2>
+                    <h2>音楽ファイル[mp3]</h2>
                     <input type="file" name="music">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="更新">
+                    <p class="music_error">{{ $errors->first('file.music') }}</p>
                 </div>
             </form>
         </x-app-layout>

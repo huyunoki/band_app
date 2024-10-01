@@ -20,8 +20,9 @@
                     <p class="body_error">{{ $errors->first('file.description') }}</p>
                 </div>
                 <div class="form-group">
-                    <h2>音楽ファイル</h2>
+                    <h2>音楽ファイル[mp3]</h2>
                     <input type="file" name="music">
+                    <p class="music_error">{{ $errors->first('file.music') }}</p>
                 </div>
                 <div class="form-submit">
                     <input type="submit" value="投稿">
