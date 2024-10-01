@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <h2>音楽ファイル[mp3]</h2>
                     <input type="file" name="music">
-                    <p class="music_error">{{ $errors->first('file.music') }}</p>
+                    <p class="music_error">{{ $errors->first('music') }}</p>
                 </div>
                 <div class="form-submit">
                     <input type="submit" value="投稿">
