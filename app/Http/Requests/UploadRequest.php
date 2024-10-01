@@ -24,7 +24,7 @@ class UploadRequest extends FormRequest
         return [
             'file.title' => 'required|string|max:100',
             'file.description' => 'required|string|max:4000',
-            'file.music' => 'required|mimes:mp3|max:10240',
+            'music' => 'required|mimes:mp3|max:10240',
         ];
     }
 }
