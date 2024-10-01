@@ -33,7 +33,6 @@ body {
 input[type="text"], input[type="file"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #00ffee;
     border-radius: 4px;
     outline: none; 
@@ -45,7 +44,6 @@ input[type="text"], input[type="file"] {
 input[type="text"]:focus, input[type="file"]:focus {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
     border-color: #00ffee;
     border-radius: 4px;
     box-shadow: 0 0 10px #00ffee;
@@ -73,9 +71,9 @@ input[type="submit"]:hover {
     box-shadow: 0 0 30px #00ffee;
 }
 
-.title_error, .body_error {
+.title_error, .body_error, .music_error{
     color: white;
     font-size: 1em;
     text-align: left;
-    height: 1em;
+    height: 1.2em;
 }
