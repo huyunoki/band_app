@@ -68,14 +68,10 @@ body {
     margin-left: 20px;
 }
 
-.inline-flex.active { /* 開いているページのボタン */
+.inline-flex.active {
     border-bottom-color: #00ffee;
     color: var(--main-color);
     text-shadow: 0 0 25px #00ffee;
-}
-
-.inline-flex.active:focus {
-    border-bottom-color: #4c51bf;
 }
 
 .inline-flex.inactive {
@@ -110,9 +106,7 @@ body {
     color: var(--main-color);
     background-color: black;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-    box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .dropdown-trigger:hover {
@@ -140,7 +134,6 @@ body {
 .nav-links {
     padding-top: 0.5rem;
     padding-bottom: 0.75rem;
-    space-y: 0.25rem;
 }
 
 .settings-options {
@@ -166,7 +159,6 @@ body {
 
 .settings-links {
     margin-top: 0.75rem;
-    space-y: 0.25rem;
 }
 
 @media (max-width: 1200px) {

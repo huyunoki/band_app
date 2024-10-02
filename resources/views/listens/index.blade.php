@@ -10,6 +10,11 @@
     </head>
     <body>
         <x-app-layout>
+            <form method="GET">
+                <button type="submit" class="sort" name="order" value="{{ $order === 'desc' ? 'asc' : 'desc' }}">
+                    {{ $order === 'desc' ? '古い順に表示' : '最新順に表示' }}
+                </button>
+            </form>
             <div class='listens'>
                 @foreach($uploads as $upload)
                     <div class="listen-item">

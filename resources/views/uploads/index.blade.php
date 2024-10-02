@@ -8,11 +8,16 @@
     </head>
     <body>
         <x-app-layout>
-           <div class="uploads-container">
+            <div class="uploads-container">
                 <a href='/upload/create' class="create-button">
                     <div>新規作成する</div>
                 </a>
             </div>
+            <form method="GET">
+                <button type="submit" class="sort" name="order" value="{{ $order === 'desc' ? 'asc' : 'desc' }}">
+                    {{ $order === 'desc' ? '古い順に表示' : '最新順に表示' }}
+                </button>
+            </form>
             <div class='uploads'>
                 @foreach($uploads as $upload)
                     <div class="upload-item">
