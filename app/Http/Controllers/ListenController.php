@@ -10,33 +10,40 @@ use App\Models\Url;
 
 class ListenController extends Controller
 {
-    public function show(Upload $upload) 
+    public function show(Request $request, Upload $upload) 
     {
-        $uploads = $upload->getPaginateByLimit();
+        $order = $request->input('order', 'desc'); // デフォルトは新しい順
+        $uploads = $upload->orderBy('created_at', $order)->paginate(10); // ページネーションを適用
         $likedUploads = auth()->user()->likes->pluck('upload_id')->toArray();
     
         return view("listens.index")->with([
             'uploads' => $uploads,
-            'likedUploads' => $likedUploads
+            'likedUploads' => $likedUploads,
+            'order' => $order
         ]);
     }
     
-    public function user($userId) 
+    public function user(Request $request, $userId) 
     {
         $user = User::findOrFail($userId); 
-        $uploads = $user->uploads; 
+        $order = $request->input('order', 'desc'); // デフォルトは新しい順
+        $uploads = $user->uploads()->orderBy('created_at', $order)->get(); 
         $likedUploads = auth()->user()->likes->pluck('upload_id')->toArray();
         
         $url = Url::where('user_id', $userId)->first();
         $line = $url ? $url->line : null;
-    $instagram = $url ? $url->instagram : null;
-        return view('listens.user')->with(['user' => $user,
-                                            'uploads' => $uploads,
-                                            'likedUploads' => $likedUploads,
-                                            'line' => $line,
-                                            'instagram' => $instagram]
-                                            );
+        $instagram = $url ? $url->instagram : null;
+    
+        return view('listens.user')->with([
+            'user' => $user,
+            'uploads' => $uploads,
+            'likedUploads' => $likedUploads,
+            'line' => $line,
+            'instagram' => $instagram,
+            'order' => $order
+        ]);
     }
+
 
     
     public function likeUpload(Request $request)

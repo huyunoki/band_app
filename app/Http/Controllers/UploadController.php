@@ -11,12 +11,16 @@ use Cloudinary;
 
 class UploadController extends Controller
 {
-    public function index(Upload $upload) 
+    public function index(Request $request) 
     {
         $userId = Auth::id();
-        $upload = Upload::where('user_id', $userId)->get(); //where(フィールド名,条件)
-        return view("uploads/index")->with(['uploads'=> $upload]);
+        $order = $request->input('order', 'desc'); // desc=新しい順番 asc=古い順番
+        $uploads = Upload::where('user_id', $userId)
+                         ->orderBy('created_at', $order)
+                         ->get();
+        return view("uploads/index")->with(['uploads' => $uploads, 'order' => $order]);
     }
+
     
     public function create()
     {

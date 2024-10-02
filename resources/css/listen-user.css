@@ -16,6 +16,13 @@ body {
     font-weight: bold;
 }
 
+.sort {
+    color: white;
+}
+
+.sort:hover {
+    text-decoration: underline;
+}
 
 .listens {
     display: flex;
@@ -23,7 +30,6 @@ body {
     justify-content: center;
     gap: 20px;
     justify-content: flex-start;
-    padding-top: 1rem;
 }
 
 .listen-item {
