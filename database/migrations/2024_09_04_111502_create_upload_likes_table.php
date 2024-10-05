@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('upload_likes', function (Blueprint $table) {
+            $table->id();
             //いいねしたユーザーのid
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             //いいねされた記事のid
             $table->foreignId('upload_id')->constrained()->onDelete('cascade');
             //主キーをuser_idとpost_idの組み合わせにする
-            $table->primary(['user_id','upload_id']);
+            $table->unique(['user_id', 'upload_id']); // 主キーの代わりにユニークキーを設定
             $table->timestamps();
         });
     }
