@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>音楽聞く画面</title>
-        @vite(['resources/css/listen.css', 'resources/js/app.js'])
+        @vite(['resources/css/listen.css', 'resources/js/app.js', 'resources/js/good.js'])
         <script src="https://kit.fontawesome.com/18f505b1d5.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -42,38 +42,8 @@
                 {{ $uploads->links() }}
             </div>
         </x-app-layout>
+        <script>
+            const likedUploads = @json($likedUploads);
+        </script>
     </body>
-    <script>
-        const likedUploads = @json($likedUploads);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.like-btn').forEach(likeBtn => {
-                const postId = likeBtn.id;
-                if (likedUploads.includes(parseInt(postId))) {
-                    likeBtn.classList.add('liked');
-                }
-
-                likeBtn.addEventListener('click', async (e) => {
-                    const clickedEl = e.target;
-                    clickedEl.classList.toggle('liked');
-                    const postId = e.target.id;
-
-                    try {
-                        const res = await fetch('/upload/like', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                            },
-                            body: JSON.stringify({ upload_id: postId })
-                        });
-                        const data = await res.json();
-                        clickedEl.nextElementSibling.innerHTML = data.likesCount;
-                    } catch (error) {
-                        alert('処理が失敗しました。画面を再読み込みし、通信環境の良い場所で再度お試しください。');
-                    }
-                });
-            });
-        });
-    </script>
 </html>

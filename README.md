@@ -1,66 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# アプリ名
+BAND MAN
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 概要
+このアプリは、バンドメンバーの募集や自身の音楽を広めたい人向けに作成したもので、
+誰でも気軽に音楽をアップロードし、他のユーザーの音楽を聴くことができるwebアプリです。
+従来のバンドメンバー募集では、事前に相手の音楽を聴けないため、音楽性の違いによる解散が多いという課題がありました。
+本アプリは、先に音楽を聴いてから応募できる仕組みを提供することで、このミスマッチを防ぎ、効率的なバンド活動を実現します。
+また、私自身も音楽が好きでバンド活動をしている中で、素晴らしい音楽がもっと広まるべきだと感じてきました。
+このアプリを通じて、様々なアーティストが自分たちの音楽を気軽に発信し、多くの人に新たな音楽との出会いを提供できる場を作りたいと考えています。
+また今回は1人で要件定義、フロント・バックエンド・デプロイを行いました。
 
-## About Laravel
+## 使用技術
+PHP:8.2.18
+Laravel:10.48.17
+Tailwind:3.4.10
+Pusher:8.4.0-rc2
+デプロイ：Heroku
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[![使用技術アイコン](https://skillicons.dev/icons?i=php,laravel,tailwind,heroku)](https://skillicons.dev)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## URL・テストユーザー
+URL:localhost:3000
+テストユーザー
+- name:大西柊司
+- email:k161616@kansai-u.ac.jp
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 機能
+- 投稿周りのCRUD
+- いいね機能
+- コメント機能
+- 音声投稿
+- チャット機能
+- カレンダー機能
+- ログイン機能
+- Instagram、LINEの登録機能
+- user別のカテゴリー機能
+↑アピールしたいものは画像を貼ってもok
 
-## Learning Laravel
+## 工夫点
+- 見た目を統一し、機能が一目でわかるようにしました。
+- 後からコードを書き換える際に困らないよう、MVCアーキテクチャに従ってファイルを整理しました。
+- 
+- 〜〜〜〜
+- 
+## 苦労した点
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 今後の展望
+- 今後つけたい機能・やりたいこと
+- 例）ChatGPT導入
+- 例）テストを導入して安全な開発を行いたい
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ER図・ワイヤーフレームなど
+URL or スクショ（こっちの方がよい）
