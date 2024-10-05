@@ -22,6 +22,8 @@ export default defineConfig({
                 'resources/css/listen-user.css',
                 'resources/css/upload-create.css',
                 'resources/css/upload-edit.css',
+                'resources/js/chat.js',
+                'resources/js/good.js',
             ],
             refresh: true,
         }),
