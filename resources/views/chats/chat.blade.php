@@ -1,14 +1,14 @@
 <head>
     @vite(['resources/css/chat.css', 'resources/js/app.js'])
 </head>
-<x-app-layout>
-    
-                <form method="POST" onsubmit="onsubmit_Form(); return false;">
-                    @csrf
-                    <input type="text" id="input_message" autocomplete="off" />
-                    <input type="hidden" id="chat_id" name="chat_id" value="{{ $chat->id }}"> 
-                    <button type="submit" class="submit-button">送信</button>
-                </form>
+<body>
+    <x-app-layout> 
+        <form method="POST" onsubmit="onsubmit_Form(); return false;">
+            @csrf
+            <input type="text" id="input_message" autocomplete="off" />
+            <input type="hidden" id="chat_id" name="chat_id" value="{{ $chat->id }}"> 
+            <button type="submit" class="submit-button">送信</button>
+        </form>
         <div class="box">
             <div class="content">
                 <ul class="message-list" id="list_message">
@@ -20,8 +20,9 @@
                     @endforeach
                 </ul>
             </div>
-    </div>
-</x-app-layout>
+        </div>
+    </x-app-layout>
+</body>
 <script>
     const elementInputMessage = document.getElementById("input_message");
     const chatId = document.getElementById("chat_id").value;
