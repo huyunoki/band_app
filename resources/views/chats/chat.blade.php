@@ -40,7 +40,7 @@ params = {
 
 // POSTリクエスト送信処理とレスポンス取得処理
 axios
-    .post('/chat/', params)
+    .post('/chat', params)
     .then(response => {
         console.log(response);
         console.log(chatId);
