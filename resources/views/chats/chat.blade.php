@@ -29,39 +29,39 @@
     
     // formのsubmit処理
     function onsubmit_Form() {
-let strMessage = elementInputMessage.value;
-if (!strMessage) {
-    return;
-}
-params = { 
-    'message': strMessage,
-    'chat_id': chatId
-};
+        let strMessage = elementInputMessage.value;
+        if (!strMessage) {
+            return;
+        }
+        params = { 
+            'message': strMessage,
+            'chat_id': chatId
+        };
+        
+        // POSTリクエスト送信処理とレスポンス取得処理
+        axios
+            .post('/chat', params)
+            .then(response => {
+                console.log(response);
+                console.log(chatId);
+                console.log("リロードしました");
+                location.reload();
+                // メッセージリストに追加する処理
+                let elementLi = document.createElement("li");
+                let elementUsername = document.createElement("strong");
+                let elementMessage = document.createElement("div");
+                elementMessage.textContent = strMessage;
+                elementLi.append(elementUsername);
+                elementLi.append(elementMessage);
+                elementLi.classList.add('my-message'); // 自分のメッセージとしてクラスを追加
+                elementListMessage.prepend(elementLi); // リストの一番上に追加
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
+        elementInputMessage.value = "";
+    }
 
-// POSTリクエスト送信処理とレスポンス取得処理
-axios
-    .post('/chat', params)
-    .then(response => {
-        console.log(response);
-        console.log(chatId);
-
-        // メッセージリストに追加する処理
-        let elementLi = document.createElement("li");
-        let elementUsername = document.createElement("strong");
-        let elementMessage = document.createElement("div");
-        elementMessage.textContent = strMessage;
-        elementLi.append(elementUsername);
-        elementLi.append(elementMessage);
-        elementLi.classList.add('my-message'); // 自分のメッセージとしてクラスを追加
-        elementListMessage.prepend(elementLi); // リストの一番上に追加
-    })
-    .catch(error => {
-        console.log(error.response);
-    });
-elementInputMessage.value = "";
-}
-
-    
     window.addEventListener("DOMContentLoaded", () => {
         const elementListMessage = document.getElementById("list_message");
         
@@ -73,7 +73,6 @@ elementInputMessage.value = "";
             if (e.chat.chat_id === chatId) {
                 let strUsername = e.chat.userName;
                 let strMessage = e.chat.body;
-    
                 let elementLi = document.createElement("li");
                 let elementUsername = document.createElement("strong");
                 let elementMessage = document.createElement("div");
